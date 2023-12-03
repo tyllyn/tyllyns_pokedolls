@@ -1,9 +1,9 @@
 {
 	"required": true,
-	"package": "com.example.mixin",
+	"package": "com.tyllyn.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"ExampleMixin"
+		"PokedollMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
