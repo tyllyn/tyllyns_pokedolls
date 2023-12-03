@@ -1,4 +1,4 @@
-package com.tyllyn.mixin.client;
+package com.tyllyn.pokedoll_mod.mixin.client;
 
 import net.minecraft.client.MinecraftClient;
 import org.spongepowered.asm.mixin.Mixin;

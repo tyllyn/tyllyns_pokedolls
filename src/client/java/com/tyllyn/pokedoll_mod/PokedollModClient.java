@@ -1,4 +1,4 @@
-package com.tyllyn;
+package com.tyllyn.pokedoll_mod;
 
 import net.fabricmc.api.ClientModInitializer;
 
