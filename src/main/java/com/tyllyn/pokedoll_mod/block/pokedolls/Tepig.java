@@ -10,6 +10,16 @@ import net.minecraft.world.BlockView;
 
 public class Tepig extends Block {
 
+	private static Tepig singletonInstance = null;
+
+	public static Tepig GetInstance(Settings settings) {
+		if (singletonInstance != null) {
+			return singletonInstance;
+		}
+		singletonInstance = new Tepig(settings);
+		return singletonInstance;
+	}
+
 	public Tepig(Settings settings) {
 		super(settings);
 	}

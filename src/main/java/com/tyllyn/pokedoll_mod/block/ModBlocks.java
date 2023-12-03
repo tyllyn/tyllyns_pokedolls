@@ -7,7 +7,6 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
@@ -19,8 +18,8 @@ public class ModBlocks {
 
     //public static final Block POKEDOLL_TEPIG_BLOCK =
 
-    //public static Block BASE_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.GLASS));
-    public static Block BASE_BLOCK = new Tepig(GetBlockSettings());
+    public static Block BASE_BLOCK = new Block(GetBlockSettings());
+    //public static Block BASE_BLOCK = new Tepig(GetBlockSettings());
     public static String NAMESPACE = "pokedoll_mod";
     public static String BLOCK_NAME_PREFIX = "pokedoll_";
 
@@ -33,10 +32,14 @@ public class ModBlocks {
 
     public static Block GetBaseBlock(String name) {
 
-        PokedollMod.LOGGER.info("Looking up base block... "+ "com.tyllyn.pokedoll_mod.block.pokedolls." + name);
+        PokedollMod.LOGGER.info("Looking up base block for " + name);
 
-        //Block block = new Block(FabricBlockSettings.copyOf(BASE_BLOCK));
-        return BASE_BLOCK;
+        switch (name) {
+            case "Tepig":
+                return Tepig.GetInstance(GetBlockSettings());
+            default:
+                return BASE_BLOCK;
+        }
 
 //        Tepig tepig = new Tepig(FabricBlockSettings.copyOf(Blocks.GLASS));
 //        return (Block) tepig;
@@ -60,11 +63,8 @@ public class ModBlocks {
     }
 
     private static void RegisterBlockItem(String name) {
-//        return Registry.register(
-//                Registries.ITEM,
-//                new Identifier(PokedollMod.MOD_ID, name),
-//                new BlockItem(GetBaseBlock(), new FabricItemSettings())
-//        );
+
+        PokedollMod.LOGGER.info("Registering block-item for " + name + "...");
 
         Registry.register(
                 Registries.ITEM,
@@ -73,20 +73,18 @@ public class ModBlocks {
                         BLOCK_NAME_PREFIX + name.toLowerCase()
                 ),
                 new BlockItem(
-                        BASE_BLOCK,
+                        GetBaseBlock(name),
                         new FabricItemSettings()
                 )
         );
+
+        PokedollMod.LOGGER.info("Block-Item registered!");
 
     }
 
     private static void RegisterBlock(String name) {
 
-//        Registry.register(
-//                Registries.BLOCK,
-//                new Identifier(PokedollMod.MOD_ID, name),
-//                GetBaseBlock()
-//        );
+        PokedollMod.LOGGER.info("Register block for " + name + "...");
 
         Registry.register(
                 Registries.BLOCK,
@@ -97,6 +95,8 @@ public class ModBlocks {
                 ModBlocks.GetBaseBlock(name)
         );
 
+        PokedollMod.LOGGER.info("Block registered!");
+
         RegisterBlockItem(name);
 
     }
@@ -104,7 +104,7 @@ public class ModBlocks {
     public static void RegisterModBlocks() {
         PokedollMod.LOGGER.info("Registering ModBlocks for " + PokedollMod.MOD_ID);
         RegisterBlock("Tepig");
-        //Block temp = POKEDOLL_TEPIG_BLOCK;
+        RegisterBlock("Snivy");
     }
 
 }

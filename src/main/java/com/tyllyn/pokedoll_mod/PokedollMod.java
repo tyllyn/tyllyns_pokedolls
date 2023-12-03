@@ -32,26 +32,5 @@ public class PokedollMod implements ModInitializer {
 
 		ModBlocks.RegisterModBlocks();
 
-//		Registry.register(
-//				Registries.BLOCK,
-//				new Identifier(
-//						"pokedoll_mod",
-//						"pokedoll_tepig"
-//				),
-//				ModBlocks.GetBaseBlock()
-//		);
-//
-//		Registry.register(
-//				Registries.ITEM,
-//				new Identifier(
-//						"pokedoll_mod",
-//						"pokedoll_tepig"
-//				),
-//				new BlockItem(
-//						ModBlocks.GetBaseBlock(),
-//						new FabricItemSettings()
-//				)
-//		);
-
 	}
 }
